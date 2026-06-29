@@ -5,6 +5,8 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 # We don't copy .env because of .dockerignore, build time secrets should be passed via --build-arg if needed
+ARG GEMINI_API_KEY
+ENV GEMINI_API_KEY=$GEMINI_API_KEY
 RUN npm run build
 
 # Production stage
