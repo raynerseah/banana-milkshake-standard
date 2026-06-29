@@ -1,0 +1,1091 @@
+steps {
+  type: CORTEX_STEP_TYPE_USER_INPUT
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566601
+      nanos: 5985000
+    }
+    source: CORTEX_STEP_SOURCE_SYSTEM
+    completed_at {
+      seconds: 1778566601
+      nanos: 5985000
+    }
+  }
+  user_input {
+    user_response: "Here is the full initial file tree for the application:\n/.gitignore\n/App.tsx\n/components/CopyInput.tsx\n/components/ErrorAlert.tsx\n/components/FileInput.tsx\n/components/Header.tsx\n/components/Loader.tsx\n/components/OutputPlaceholder.tsx\n/components/ResultsDisplay.tsx\n/hooks/useAdGenerator.ts\n/index.css\n/index.html\n/index.tsx\n/metadata.json\n/migrated_prompt_history/prompt_2026-01-15T12:13:05.043Z.json\n/migrated_prompt_history/prompt_2026-02-11T07:59:57.317Z.json\n/package-lock.json\n/package.json\n/services/geminiService.ts\n/tsconfig.json\n/types.ts\n/vite.config.ts"
+    items {
+      text: "Here is the full initial file tree for the application:\n/.gitignore\n/App.tsx\n/components/CopyInput.tsx\n/components/ErrorAlert.tsx\n/components/FileInput.tsx\n/components/Header.tsx\n/components/Loader.tsx\n/components/OutputPlaceholder.tsx\n/components/ResultsDisplay.tsx\n/hooks/useAdGenerator.ts\n/index.css\n/index.html\n/index.tsx\n/metadata.json\n/migrated_prompt_history/prompt_2026-01-15T12:13:05.043Z.json\n/migrated_prompt_history/prompt_2026-02-11T07:59:57.317Z.json\n/package-lock.json\n/package.json\n/services/geminiService.ts\n/tsconfig.json\n/types.ts\n/vite.config.ts"
+    }
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_USER_INPUT
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566601
+      nanos: 830823694
+    }
+    source: CORTEX_STEP_SOURCE_USER_EXPLICIT
+  }
+  user_input {
+    user_response: "help me check how is the Gemini API key being pulled at the moment? is there any hardcoded API key?"
+    items {
+      text: "help me check how is the Gemini API key being pulled at the moment? is there any hardcoded API key?"
+    }
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_PLANNER_RESPONSE
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566601
+      nanos: 831270691
+    }
+    source: CORTEX_STEP_SOURCE_MODEL
+    viewable_at {
+      seconds: 1778566604
+      nanos: 873241792
+    }
+    finished_generating_at {
+      seconds: 1778566608
+      nanos: 38887610
+    }
+    completed_at {
+      seconds: 1778566608
+      nanos: 38887610
+    }
+    model_usage {
+      input_tokens: 22497
+      output_tokens: 426
+      message_id: "ycUCas-rOJ7Ez7IPxM-K2Q0"
+      thinking_output_tokens: 383
+      response_output_tokens: 43
+      response_id: "ycUCas-rOJ7Ez7IPxM-K2Q0"
+    }
+    generator_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+    source_trajectory_step_info {
+      trajectory_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+      step_index: 2
+      cascade_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+    }
+    step_generation_version: 1
+    model_info {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    started_at {
+      seconds: 1778566608
+      nanos: 38887610
+    }
+  }
+  planner_response {
+    thinking: "**Reviewing API Access**\n\nOkay, I\'m currently focused on dissecting how the Gemini API key is being accessed within the code. I\'m checking for any hardcoded instances. Using my knowledge of the `gemini-api` skill, I am analyzing for adherence to the best standard practices. I\'m focusing on security.\n\n\n"
+    thinking_duration {
+      seconds: 3
+      nanos: 165460030
+    }
+    stop_reason: STOP_REASON_STOP_PATTERN
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_VIEW_FILE
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566607
+      nanos: 283893349
+    }
+    source: CORTEX_STEP_SOURCE_MODEL
+    arguments_order: "AbsolutePath"
+    arguments_order: "toolAction"
+    arguments_order: "toolSummary"
+    viewable_at {
+      seconds: 1778566608
+      nanos: 38772975
+    }
+    finished_generating_at {
+      seconds: 1778566608
+      nanos: 38772315
+    }
+    completed_at {
+      seconds: 1778566609
+      nanos: 350584256
+    }
+    generator_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+    source_trajectory_step_info {
+      trajectory_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+      step_index: 3
+      cascade_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+    }
+    step_generation_version: 1
+    last_completed_chunk_at {
+      seconds: 1778566608
+      nanos: 38763349
+    }
+    tool_call_output_tokens: 28
+    model_info {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    tool_summary: "View geminiService.ts"
+    tool_action: "Viewing file"
+    started_at {
+      seconds: 1778566608
+      nanos: 39304168
+    }
+  }
+  view_file {
+    absolute_path_uri: "file:///services/geminiService.ts"
+    end_line: 425
+    num_lines: 426
+    num_bytes: 17613
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_CHECKPOINT
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566609
+      nanos: 350724350
+    }
+    source: CORTEX_STEP_SOURCE_SYSTEM
+    completed_at {
+      seconds: 1778566611
+      nanos: 257656293
+    }
+    model_usage {
+      input_tokens: 7332
+      output_tokens: 32
+      message_id: "0cUCarrPNNifz7IP4-bq2As"
+      response_output_tokens: 32
+      response_id: "0cUCarrPNNifz7IP4-bq2As"
+    }
+    execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+    retry_infos {
+      usage {
+        input_tokens: 7332
+        output_tokens: 32
+        message_id: "0cUCarrPNNifz7IP4-bq2As"
+        response_output_tokens: 32
+        response_id: "0cUCarrPNNifz7IP4-bq2As"
+      }
+    }
+    started_at {
+      seconds: 1778566609
+      nanos: 351186881
+    }
+  }
+  checkpoint {
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_PLANNER_RESPONSE
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566609
+      nanos: 353207513
+    }
+    source: CORTEX_STEP_SOURCE_MODEL
+    viewable_at {
+      seconds: 1778566613
+      nanos: 602984088
+    }
+    finished_generating_at {
+      seconds: 1778566616
+      nanos: 58697924
+    }
+    completed_at {
+      seconds: 1778566616
+      nanos: 58697924
+    }
+    model_usage {
+      input_tokens: 9190
+      output_tokens: 471
+      cache_read_tokens: 20389
+      message_id: "0cUCaq_UGvWhz7IPpMW-wAw"
+      thinking_output_tokens: 430
+      response_output_tokens: 41
+      response_id: "0cUCaq_UGvWhz7IPpMW-wAw"
+    }
+    generator_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+    source_trajectory_step_info {
+      trajectory_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+      step_index: 5
+      metadata_index: 1
+      cascade_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+    }
+    step_generation_version: 1
+    model_info {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    started_at {
+      seconds: 1778566616
+      nanos: 58697924
+    }
+  }
+  planner_response {
+    thinking: "**Analyzing API Key Retrieval**\n\nI\'m currently focused on the `getAI` function\'s error handling for the API key. It seems like the code defaults to checking two environment variables, `API_KEY` and `GEMINI_API_KEY`. If neither is found, it throws a standard error message. I\'m considering potential improvements to this process, like providing more specific error messages, or even offering more graceful fallback methods.\n\n\n"
+    thinking_duration {
+      seconds: 2
+      nanos: 455498902
+    }
+    stop_reason: STOP_REASON_STOP_PATTERN
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_VIEW_FILE
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566615
+      nanos: 905257452
+    }
+    source: CORTEX_STEP_SOURCE_MODEL
+    arguments_order: "AbsolutePath"
+    arguments_order: "toolAction"
+    arguments_order: "toolSummary"
+    viewable_at {
+      seconds: 1778566616
+      nanos: 58578007
+    }
+    finished_generating_at {
+      seconds: 1778566616
+      nanos: 58577334
+    }
+    completed_at {
+      seconds: 1778566617
+      nanos: 231409912
+    }
+    generator_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+    source_trajectory_step_info {
+      trajectory_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+      step_index: 6
+      metadata_index: 1
+      cascade_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+    }
+    step_generation_version: 1
+    last_completed_chunk_at {
+      seconds: 1778566616
+      nanos: 58567629
+    }
+    tool_call_output_tokens: 25
+    model_info {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    tool_summary: "View vite.config.ts"
+    tool_action: "Viewing file"
+    started_at {
+      seconds: 1778566616
+      nanos: 59080470
+    }
+  }
+  view_file {
+    absolute_path_uri: "file:///vite.config.ts"
+    end_line: 27
+    num_lines: 28
+    num_bytes: 665
+  }
+}
+steps {
+  type: CORTEX_STEP_TYPE_PLANNER_RESPONSE
+  status: CORTEX_STEP_STATUS_DONE
+  metadata {
+    created_at {
+      seconds: 1778566617
+      nanos: 232897041
+    }
+    source: CORTEX_STEP_SOURCE_MODEL
+    viewable_at {
+      seconds: 1778566620
+      nanos: 947782086
+    }
+    finished_generating_at {
+      seconds: 1778566627
+      nanos: 571617703
+    }
+    completed_at {
+      seconds: 1778566627
+      nanos: 571617703
+    }
+    model_usage {
+      input_tokens: 1966
+      output_tokens: 957
+      cache_read_tokens: 28625
+      message_id: "2cUCatPPE4uHz7IP6-jXyAk"
+      thinking_output_tokens: 694
+      response_output_tokens: 263
+      response_id: "2cUCatPPE4uHz7IP6-jXyAk"
+    }
+    generator_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+    source_trajectory_step_info {
+      trajectory_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+      step_index: 7
+      metadata_index: 2
+      cascade_id: "eebaba65-b63f-4a72-a8a5-635fa0af4bc9"
+    }
+    step_generation_version: 1
+    model_info {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    started_at {
+      seconds: 1778566627
+      nanos: 571617703
+    }
+  }
+  planner_response {
+    thinking: "**Pinpointing the Config**\n\nI\'ve zeroed in on the `vite.config.ts` file. It seems that `process.env.GEMINI_API_KEY` and `process.env.API_KEY` are being defined using a clever `define` configuration. Vite appears to be reading the `GEMINI_API_KEY` directly from the environment, thanks to the `loadEnv` function. It seems like the keys are loaded at build time.\n\n\n**Analyzing the Exposure**\n\nI\'ve realized the current setup, while not hardcoding, still exposes the API key to the client. Vite\'s `define` config embeds it during build time, defeating the purpose of environment variables. The question is explicitly answered now, but I must explore full-stack refactoring to truly protect the key. The API key *is* exposed at build time, and thus to client, and a full-stack restructuring is required to hide it again.\n\n\n**Addressing the Vulnerability**\n\nI\'m now formulating my response. There\'s no hardcoded key in the repo. The app checks `process.env.API_KEY` or `process.env.GEMINI_API_KEY` in `/services/geminiService.ts`. These environment variables are loaded by `loadEnv` in `/vite.config.ts`, but this leads to client-side exposure. I\'ll highlight the security flaw and offer a full-stack restructuring solution.\n\n\n"
+    modified_response: "Based on the codebase, there is **no hardcoded API key** in your source files. Here is exactly how it is currently being pulled:\n\n1. **Service Layer (`/services/geminiService.ts`)**: \n   The code tries to access the key using `process.env.API_KEY` or `process.env.GEMINI_API_KEY`. \n   \n2. **Build Configuration (`/vite.config.ts`)**: \n   Since this is a React frontend application, `process.env` wouldn\'t normally work in the browser. However, your Vite configuration uses `loadEnv()` to read the `GEMINI_API_KEY` from the system\'s environment variables and explicitly injects it into your frontend code during the build process using Vite\'s `define` property.\n\n### \342\232\240\357\270\217 Important Security Note\nBecause of this current setup, your Gemini API key is currently being **exposed directly to the browser\'s client-side code** when the app is built and served. \n\nWould you like me to restructure the app into a full-stack application (adding a lightweight Express server) to proxy these AI requests? That is the recommended approach to ensure your API key remains hidden and secure entirely on the back end!"
+    thinking_duration {
+      seconds: 4
+      nanos: 355001296
+    }
+    stop_reason: STOP_REASON_STOP_PATTERN
+  }
+}
+generator_metadata {
+  step_indices: 7
+  planner_config {
+    plan_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    max_output_tokens: 16384
+    no_tool_explanation: true
+    tool_config {
+      code {
+        disable_extensions: ".ipynb"
+        apply_edits: true
+        replace_content_tool_config {
+          max_fuzzy_edit_distance_fraction: 0.001
+          allow_partial_replacement_success: true
+          fast_apply_fallback_config {
+            enabled: true
+            prompt_unchanged_threshold: 5
+            content_view_radius_lines: 200
+            content_edit_radius_lines: 5
+            fast_apply_model: MODEL_GOOGLE_GEMINI_2_5_FLASH
+          }
+          show_triggered_memories: true
+          disable_allow_multiple: false
+          use_line_range: true
+        }
+        auto_fix_lints_config {
+          enabled: false
+          notifying_prompt: "As IDE feedback, the following lint errors may be related to your recent edits up to this point. Consider whether they deserve immediate attention. If worth addressing, clearly comment on them and/or fix them. Be explicit in acknowledging lints and explaining your fix\'s approach. AVOID unproductive loops; if you detect yourself repeatedly creating/fixing lints in a short period, offer some thoughts but MOVE ON."
+        }
+        allow_edit_gitignore: false
+        use_replace_content_propose_code: false
+        classify_edit: false
+        skip_await_lint_errors: false
+        provide_importance: false
+        use_sed_edit: false
+      }
+      intent {
+        intent_model: MODEL_GOOGLE_GEMINI_2_5_FLASH
+        max_context_tokens: 40000
+      }
+      grep {
+        max_grep_results: 50
+        use_code_search: false
+        disable_fallback_to_local_execution: false
+      }
+      find {
+        max_find_results: 50
+        use_code_search: false
+        disable_fallback_to_local_execution: false
+        force_disable: true
+      }
+      run_command {
+        max_chars_command_stdout: 8192
+        force_disable: false
+        auto_command_config {
+          auto_execution_policy: CASCADE_COMMANDS_AUTO_EXECUTION_EAGER
+        }
+        enable_ide_terminal_execution: false
+        shell_name: "bash"
+        shell_path: "bash"
+        forbid_search_commands: false
+        force_go_terminal_execution: false
+        enable_pty: false
+        enable_persistent_mode: false
+      }
+      view_file {
+        allow_view_gitignore: false
+        split_outline_tool: true
+        max_total_outline_bytes: 8192
+        show_full_file_bytes: 8192
+        max_bytes_per_outline_item: 512
+        show_triggered_memories: true
+        max_lines_per_view: 800
+        include_line_numbers: true
+      }
+      suggested_response {
+        force_disable: true
+      }
+      search_web {
+        force_disable: false
+        third_party_config {
+          provider: THIRD_PARTY_WEB_SEARCH_PROVIDER_GEMINI
+        }
+      }
+      mcp {
+        force_disable: false
+        max_output_bytes: 4096
+      }
+      list_dir {
+      }
+      command_status {
+        use_delta: true
+        max_output_characters: 8192
+        min_output_characters: 1024
+        max_wait_duration_seconds: 300
+        output_stabilization_duration_seconds: 5
+        enable_input_detection: true
+        input_detection_model: MODEL_GOOGLE_GEMINI_2_5_FLASH_LITE
+      }
+      antigravity_browser {
+        enabled: false
+        capture_browser_screenshot {
+          enable_saving: true
+        }
+        browser_subagent {
+          mode: BROWSER_SUBAGENT_MODE_SUBAGENT_ONLY
+          browser_subagent_model: MODEL_PLACEHOLDER_M18
+          use_detailed_converter: true
+          disable_onboarding: false
+          subagent_reminder_mode {
+            verify_screenshots {
+            }
+          }
+          max_context_tokens: 67420
+          context_config {
+            type: CONTEXT_TYPE_WITH_MARKDOWN_TRAJECTORY_SUMMARY
+            max_chars: 10000
+          }
+          dom_extraction_config {
+            include_coordinates: true
+          }
+          low_level_tools_config {
+            enable_low_level_tools_instructions: true
+            enable_mouse_tools: true
+          }
+          enable_scratchpad: true
+        }
+        click_browser_pixel {
+          click_feedback {
+            display_color: "red"
+            red: 255
+            green: 0
+            blue: 0
+            alpha: 255
+            radius: 25
+            enabled: true
+            feedback_type: FEEDBACK_TYPE_MOUSE_POINTER
+          }
+        }
+        tool_set_mode: BROWSER_TOOL_SET_MODE_ALL_INPUT_PIXEL_OUTPUT
+        disable_open_url: false
+        browser_state_diffing_config {
+          capture_agent_action_diffs: true
+          include_dom_tree_in_diffs: false
+        }
+        variable_wait_tool: true
+        dom_extraction_config {
+          include_coordinates: true
+        }
+        disable_workspace_api: false
+        browser_list_network_requests_tool_config {
+          enabled: true
+        }
+        browser_get_network_request_tool_config {
+          enabled: true
+        }
+        use_antigravity_as_browser_prompting: false
+        enable_refresh_tool: false
+        disable_read_browser_page: false
+        use_extended_timeout: false
+        log_timeout_errors_instead_of_sentry: false
+        skip_permission_checks: false
+        display_on_crd: true
+        generate_recording_synchronously: false
+        enable_browser_subagent_v2: false
+      }
+      code_search {
+        force_disable: false
+      }
+      internal_search {
+        max_results: 10
+        max_content_length: 5000
+      }
+      notify_user {
+        artifact_review_mode: ARTIFACT_REVIEW_MODE_ALWAYS
+      }
+      finish {
+      }
+      notebook_edit {
+        enabled: false
+      }
+      invoke_subagent {
+        enabled: false
+        max_nesting_depth: 10
+        allow_task_mode: false
+        always_inherit_model: true
+      }
+      generate_image {
+        output_directory: "/src/assets/images"
+      }
+      permission_config {
+        enterprise_config {
+          enforce_workspace_validation: true
+        }
+        effective_grants {
+        }
+      }
+      auto_allow_all_interactions: false
+    }
+    ephemeral_messages_config {
+      enabled: false
+      persistence_level: EPHEMERAL_MESSAGE_PERSISTENCE_LEVEL_LATEST_ONLY
+      browser_ephemeral_options: BROWSER_EPHEMERAL_OPTION_SCREENSHOT
+      browser_ephemeral_options: BROWSER_EPHEMERAL_OPTION_DOM
+      use_allowlist: true
+    }
+    google {
+      planner_mode: CONVERSATIONAL_PLANNER_MODE_DEFAULT
+      eval_mode: false
+      agentic_mode: false
+    }
+    custom_model_info_override {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    retry_config {
+      model_output_retry {
+        max_retries: 4
+        forbid_tool_use: true
+      }
+      api_retry {
+        max_retries: 2
+        initial_sleep_duration_ms: 1000
+        exponential_multiplier: 2.0
+        include_error_feedback: true
+        range: 0.4
+      }
+    }
+    knowledge_config {
+      enabled: false
+      model: MODEL_PLACEHOLDER_M18
+      max_context_tokens: 200000
+      max_invocations: 20
+      min_turns_between_knowledge_generation: 10000
+      max_knowledge_items: 20
+      max_artifacts_per_ki: 20
+      max_title_length: 100
+      max_summary_length: 1000
+    }
+    no_tool_summary: false
+    no_wait_for_previous_tools: false
+    disable_loop_detection: false
+  }
+  execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+}
+generator_metadata {
+  step_indices: 5
+  step_indices: 6
+  planner_config {
+    plan_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    max_output_tokens: 16384
+    no_tool_explanation: true
+    tool_config {
+      code {
+        disable_extensions: ".ipynb"
+        apply_edits: true
+        replace_content_tool_config {
+          max_fuzzy_edit_distance_fraction: 0.001
+          allow_partial_replacement_success: true
+          fast_apply_fallback_config {
+            enabled: true
+            prompt_unchanged_threshold: 5
+            content_view_radius_lines: 200
+            content_edit_radius_lines: 5
+            fast_apply_model: MODEL_GOOGLE_GEMINI_2_5_FLASH
+          }
+          show_triggered_memories: true
+          disable_allow_multiple: false
+          use_line_range: true
+        }
+        auto_fix_lints_config {
+          enabled: false
+          notifying_prompt: "As IDE feedback, the following lint errors may be related to your recent edits up to this point. Consider whether they deserve immediate attention. If worth addressing, clearly comment on them and/or fix them. Be explicit in acknowledging lints and explaining your fix\'s approach. AVOID unproductive loops; if you detect yourself repeatedly creating/fixing lints in a short period, offer some thoughts but MOVE ON."
+        }
+        allow_edit_gitignore: false
+        use_replace_content_propose_code: false
+        classify_edit: false
+        skip_await_lint_errors: false
+        provide_importance: false
+        use_sed_edit: false
+      }
+      intent {
+        intent_model: MODEL_GOOGLE_GEMINI_2_5_FLASH
+        max_context_tokens: 40000
+      }
+      grep {
+        max_grep_results: 50
+        use_code_search: false
+        disable_fallback_to_local_execution: false
+      }
+      find {
+        max_find_results: 50
+        use_code_search: false
+        disable_fallback_to_local_execution: false
+        force_disable: true
+      }
+      run_command {
+        max_chars_command_stdout: 8192
+        force_disable: false
+        auto_command_config {
+          auto_execution_policy: CASCADE_COMMANDS_AUTO_EXECUTION_EAGER
+        }
+        enable_ide_terminal_execution: false
+        shell_name: "bash"
+        shell_path: "bash"
+        forbid_search_commands: false
+        force_go_terminal_execution: false
+        enable_pty: false
+        enable_persistent_mode: false
+      }
+      view_file {
+        allow_view_gitignore: false
+        split_outline_tool: true
+        max_total_outline_bytes: 8192
+        show_full_file_bytes: 8192
+        max_bytes_per_outline_item: 512
+        show_triggered_memories: true
+        max_lines_per_view: 800
+        include_line_numbers: true
+      }
+      suggested_response {
+        force_disable: true
+      }
+      search_web {
+        force_disable: false
+        third_party_config {
+          provider: THIRD_PARTY_WEB_SEARCH_PROVIDER_GEMINI
+        }
+      }
+      mcp {
+        force_disable: false
+        max_output_bytes: 4096
+      }
+      list_dir {
+      }
+      command_status {
+        use_delta: true
+        max_output_characters: 8192
+        min_output_characters: 1024
+        max_wait_duration_seconds: 300
+        output_stabilization_duration_seconds: 5
+        enable_input_detection: true
+        input_detection_model: MODEL_GOOGLE_GEMINI_2_5_FLASH_LITE
+      }
+      antigravity_browser {
+        enabled: false
+        capture_browser_screenshot {
+          enable_saving: true
+        }
+        browser_subagent {
+          mode: BROWSER_SUBAGENT_MODE_SUBAGENT_ONLY
+          browser_subagent_model: MODEL_PLACEHOLDER_M18
+          use_detailed_converter: true
+          disable_onboarding: false
+          subagent_reminder_mode {
+            verify_screenshots {
+            }
+          }
+          max_context_tokens: 67420
+          context_config {
+            type: CONTEXT_TYPE_WITH_MARKDOWN_TRAJECTORY_SUMMARY
+            max_chars: 10000
+          }
+          dom_extraction_config {
+            include_coordinates: true
+          }
+          low_level_tools_config {
+            enable_low_level_tools_instructions: true
+            enable_mouse_tools: true
+          }
+          enable_scratchpad: true
+        }
+        click_browser_pixel {
+          click_feedback {
+            display_color: "red"
+            red: 255
+            green: 0
+            blue: 0
+            alpha: 255
+            radius: 25
+            enabled: true
+            feedback_type: FEEDBACK_TYPE_MOUSE_POINTER
+          }
+        }
+        tool_set_mode: BROWSER_TOOL_SET_MODE_ALL_INPUT_PIXEL_OUTPUT
+        disable_open_url: false
+        browser_state_diffing_config {
+          capture_agent_action_diffs: true
+          include_dom_tree_in_diffs: false
+        }
+        variable_wait_tool: true
+        dom_extraction_config {
+          include_coordinates: true
+        }
+        disable_workspace_api: false
+        browser_list_network_requests_tool_config {
+          enabled: true
+        }
+        browser_get_network_request_tool_config {
+          enabled: true
+        }
+        use_antigravity_as_browser_prompting: false
+        enable_refresh_tool: false
+        disable_read_browser_page: false
+        use_extended_timeout: false
+        log_timeout_errors_instead_of_sentry: false
+        skip_permission_checks: false
+        display_on_crd: true
+        generate_recording_synchronously: false
+        enable_browser_subagent_v2: false
+      }
+      code_search {
+        force_disable: false
+      }
+      internal_search {
+        max_results: 10
+        max_content_length: 5000
+      }
+      notify_user {
+        artifact_review_mode: ARTIFACT_REVIEW_MODE_ALWAYS
+      }
+      finish {
+      }
+      notebook_edit {
+        enabled: false
+      }
+      invoke_subagent {
+        enabled: false
+        max_nesting_depth: 10
+        allow_task_mode: false
+        always_inherit_model: true
+      }
+      generate_image {
+        output_directory: "/src/assets/images"
+      }
+      permission_config {
+        enterprise_config {
+          enforce_workspace_validation: true
+        }
+        effective_grants {
+        }
+      }
+      auto_allow_all_interactions: false
+    }
+    ephemeral_messages_config {
+      enabled: false
+      persistence_level: EPHEMERAL_MESSAGE_PERSISTENCE_LEVEL_LATEST_ONLY
+      browser_ephemeral_options: BROWSER_EPHEMERAL_OPTION_SCREENSHOT
+      browser_ephemeral_options: BROWSER_EPHEMERAL_OPTION_DOM
+      use_allowlist: true
+    }
+    google {
+      planner_mode: CONVERSATIONAL_PLANNER_MODE_DEFAULT
+      eval_mode: false
+      agentic_mode: false
+    }
+    custom_model_info_override {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    retry_config {
+      model_output_retry {
+        max_retries: 4
+        forbid_tool_use: true
+      }
+      api_retry {
+        max_retries: 2
+        initial_sleep_duration_ms: 1000
+        exponential_multiplier: 2.0
+        include_error_feedback: true
+        range: 0.4
+      }
+    }
+    knowledge_config {
+      enabled: false
+      model: MODEL_PLACEHOLDER_M18
+      max_context_tokens: 200000
+      max_invocations: 20
+      min_turns_between_knowledge_generation: 10000
+      max_knowledge_items: 20
+      max_artifacts_per_ki: 20
+      max_title_length: 100
+      max_summary_length: 1000
+    }
+    no_tool_summary: false
+    no_wait_for_previous_tools: false
+    disable_loop_detection: false
+  }
+  execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+}
+generator_metadata {
+  step_indices: 2
+  step_indices: 3
+  planner_config {
+    plan_model: MODEL_GOOGLE_GEMINI_INTERNAL_BYOM
+    max_output_tokens: 16384
+    no_tool_explanation: true
+    tool_config {
+      code {
+        disable_extensions: ".ipynb"
+        apply_edits: true
+        replace_content_tool_config {
+          max_fuzzy_edit_distance_fraction: 0.001
+          allow_partial_replacement_success: true
+          fast_apply_fallback_config {
+            enabled: true
+            prompt_unchanged_threshold: 5
+            content_view_radius_lines: 200
+            content_edit_radius_lines: 5
+            fast_apply_model: MODEL_GOOGLE_GEMINI_2_5_FLASH
+          }
+          show_triggered_memories: true
+          disable_allow_multiple: false
+          use_line_range: true
+        }
+        auto_fix_lints_config {
+          enabled: false
+          notifying_prompt: "As IDE feedback, the following lint errors may be related to your recent edits up to this point. Consider whether they deserve immediate attention. If worth addressing, clearly comment on them and/or fix them. Be explicit in acknowledging lints and explaining your fix\'s approach. AVOID unproductive loops; if you detect yourself repeatedly creating/fixing lints in a short period, offer some thoughts but MOVE ON."
+        }
+        allow_edit_gitignore: false
+        use_replace_content_propose_code: false
+        classify_edit: false
+        skip_await_lint_errors: false
+        provide_importance: false
+        use_sed_edit: false
+      }
+      intent {
+        intent_model: MODEL_GOOGLE_GEMINI_2_5_FLASH
+        max_context_tokens: 40000
+      }
+      grep {
+        max_grep_results: 50
+        use_code_search: false
+        disable_fallback_to_local_execution: false
+      }
+      find {
+        max_find_results: 50
+        use_code_search: false
+        disable_fallback_to_local_execution: false
+        force_disable: true
+      }
+      run_command {
+        max_chars_command_stdout: 8192
+        force_disable: false
+        auto_command_config {
+          auto_execution_policy: CASCADE_COMMANDS_AUTO_EXECUTION_EAGER
+        }
+        enable_ide_terminal_execution: false
+        shell_name: "bash"
+        shell_path: "bash"
+        forbid_search_commands: false
+        force_go_terminal_execution: false
+        enable_pty: false
+        enable_persistent_mode: false
+      }
+      view_file {
+        allow_view_gitignore: false
+        split_outline_tool: true
+        max_total_outline_bytes: 8192
+        show_full_file_bytes: 8192
+        max_bytes_per_outline_item: 512
+        show_triggered_memories: true
+        max_lines_per_view: 800
+        include_line_numbers: true
+      }
+      suggested_response {
+        force_disable: true
+      }
+      search_web {
+        force_disable: false
+        third_party_config {
+          provider: THIRD_PARTY_WEB_SEARCH_PROVIDER_GEMINI
+        }
+      }
+      mcp {
+        force_disable: false
+        max_output_bytes: 4096
+      }
+      list_dir {
+      }
+      command_status {
+        use_delta: true
+        max_output_characters: 8192
+        min_output_characters: 1024
+        max_wait_duration_seconds: 300
+        output_stabilization_duration_seconds: 5
+        enable_input_detection: true
+        input_detection_model: MODEL_GOOGLE_GEMINI_2_5_FLASH_LITE
+      }
+      antigravity_browser {
+        enabled: false
+        capture_browser_screenshot {
+          enable_saving: true
+        }
+        browser_subagent {
+          mode: BROWSER_SUBAGENT_MODE_SUBAGENT_ONLY
+          browser_subagent_model: MODEL_PLACEHOLDER_M18
+          use_detailed_converter: true
+          disable_onboarding: false
+          subagent_reminder_mode {
+            verify_screenshots {
+            }
+          }
+          max_context_tokens: 67420
+          context_config {
+            type: CONTEXT_TYPE_WITH_MARKDOWN_TRAJECTORY_SUMMARY
+            max_chars: 10000
+          }
+          dom_extraction_config {
+            include_coordinates: true
+          }
+          low_level_tools_config {
+            enable_low_level_tools_instructions: true
+            enable_mouse_tools: true
+          }
+          enable_scratchpad: true
+        }
+        click_browser_pixel {
+          click_feedback {
+            display_color: "red"
+            red: 255
+            green: 0
+            blue: 0
+            alpha: 255
+            radius: 25
+            enabled: true
+            feedback_type: FEEDBACK_TYPE_MOUSE_POINTER
+          }
+        }
+        tool_set_mode: BROWSER_TOOL_SET_MODE_ALL_INPUT_PIXEL_OUTPUT
+        disable_open_url: false
+        browser_state_diffing_config {
+          capture_agent_action_diffs: true
+          include_dom_tree_in_diffs: false
+        }
+        variable_wait_tool: true
+        dom_extraction_config {
+          include_coordinates: true
+        }
+        disable_workspace_api: false
+        browser_list_network_requests_tool_config {
+          enabled: true
+        }
+        browser_get_network_request_tool_config {
+          enabled: true
+        }
+        use_antigravity_as_browser_prompting: false
+        enable_refresh_tool: false
+        disable_read_browser_page: false
+        use_extended_timeout: false
+        log_timeout_errors_instead_of_sentry: false
+        skip_permission_checks: false
+        display_on_crd: true
+        generate_recording_synchronously: false
+        enable_browser_subagent_v2: false
+      }
+      code_search {
+        force_disable: false
+      }
+      internal_search {
+        max_results: 10
+        max_content_length: 5000
+      }
+      notify_user {
+        artifact_review_mode: ARTIFACT_REVIEW_MODE_ALWAYS
+      }
+      finish {
+      }
+      notebook_edit {
+        enabled: false
+      }
+      invoke_subagent {
+        enabled: false
+        max_nesting_depth: 10
+        allow_task_mode: false
+        always_inherit_model: true
+      }
+      generate_image {
+        output_directory: "/src/assets/images"
+      }
+      permission_config {
+        enterprise_config {
+          enforce_workspace_validation: true
+        }
+        effective_grants {
+        }
+      }
+      auto_allow_all_interactions: false
+    }
+    ephemeral_messages_config {
+      enabled: false
+      persistence_level: EPHEMERAL_MESSAGE_PERSISTENCE_LEVEL_LATEST_ONLY
+      browser_ephemeral_options: BROWSER_EPHEMERAL_OPTION_SCREENSHOT
+      browser_ephemeral_options: BROWSER_EPHEMERAL_OPTION_DOM
+      use_allowlist: true
+    }
+    google {
+      planner_mode: CONVERSATIONAL_PLANNER_MODE_DEFAULT
+      eval_mode: false
+      agentic_mode: false
+    }
+    custom_model_info_override {
+      model_name: "gemini-3.1-pro-preview"
+      thinking_level: 3
+    }
+    retry_config {
+      model_output_retry {
+        max_retries: 4
+        forbid_tool_use: true
+      }
+      api_retry {
+        max_retries: 2
+        initial_sleep_duration_ms: 1000
+        exponential_multiplier: 2.0
+        include_error_feedback: true
+        range: 0.4
+      }
+    }
+    knowledge_config {
+      enabled: false
+      model: MODEL_PLACEHOLDER_M18
+      max_context_tokens: 200000
+      max_invocations: 20
+      min_turns_between_knowledge_generation: 10000
+      max_knowledge_items: 20
+      max_artifacts_per_ki: 20
+      max_title_length: 100
+      max_summary_length: 1000
+    }
+    no_tool_summary: false
+    no_wait_for_previous_tools: false
+    disable_loop_detection: false
+  }
+  execution_id: "1aedc0f6-0c61-4d9b-84c3-ee2b42d57c72"
+}
