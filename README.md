@@ -1,6 +1,14 @@
 # Banana Milkshake Standard (Ext Ver.)
 
-This is a React/Vite project ready for deployment.
+Banana Milkshake is an AI-powered ad generation tool. Using Google's Gemini models (`gemini-3-flash` and `gemini-3-pro-image`), it helps marketers and creators automatically generate professional advertisements by compositing product images, lifestyle backgrounds, logos, and generating AI-assisted ad copy (headlines, descriptions, and CTAs).
+
+## ✨ Key Features
+*   **AI Copywriter**: Get intelligent copy suggestions for headlines, descriptions, and CTAs.
+*   **Lifestyle Scene Generation**: Take standard product shots and composite them seamlessly into photorealistic lifestyle environments.
+*   **Precise Image Editing**: Make specific retouches and adjustments using AI compositing.
+*   **Final Ad Assembly**: Stitch together product assets, brand guidelines, logos, and copy into ready-to-publish digital ads.
+
+---
 
 ## 🚀 Deployment to Google Cloud (Cloud Run)
 
