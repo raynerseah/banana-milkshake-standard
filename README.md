@@ -12,7 +12,7 @@ Banana Milkshake is an AI-powered ad generation tool. Using Google's Gemini mode
 
 ## 🚀 Deployment to Google Cloud (Cloud Run)
 
-This project has been optimized for Google Cloud Run deployment. It uses a multi-stage Docker build to compile the React application and serves it via a lightweight Nginx web server configured for Single Page Applications (SPA).
+This project has been optimized for Google Cloud Run deployment. It features a unified Docker container where a secure Node.js Express backend serves the React frontend (SPA) and securely proxies requests to the Gemini API, protecting your API keys.
 
 ### Prerequisites
 1. [Google Cloud SDK (gcloud)](https://cloud.google.com/sdk/docs/install) installed and initialized.
@@ -27,37 +27,22 @@ This project has been optimized for Google Cloud Run deployment. It uses a multi
    gcloud config set project YOUR_PROJECT_ID
    ```
 
-2. **Deploy to Cloud Run:**
-   Execute the following command in the root of the project to build and deploy your container.
-   ```bash
-   gcloud run deploy banana-milkshake-app \
-     --source . \
-     --region us-central1 \
-     --allow-unauthenticated \
-     --port 8080
-   ```
-   *Note: Cloud Build will automatically use the `Dockerfile` provided to build the container.*
-
-3. **Environment Variables:**
-   If you need to pass environment variables (like API keys) to your build process in Cloud Run, use the `--set-build-env-vars` flag:
+2. **Deploy to Cloud Run with your API Key:**
+   Execute the following command in the root of the project to build and deploy your container. Because the API key is now securely handled on the backend at runtime, you must pass it using `--set-env-vars`.
    ```bash
    gcloud run deploy banana-milkshake-app \
      --source . \
      --region us-central1 \
      --allow-unauthenticated \
      --port 8080 \
-     --set-build-env-vars GEMINI_API_KEY="your-api-key"
+     --set-env-vars GEMINI_API_KEY="your-api-key"
    ```
+   *Note: Cloud Build will automatically use the `Dockerfile` provided to build the Node.js container.*
 
 ## 🔒 Security Best Practices
 
 We have conducted a security review and implemented the following:
-* Added `.env` to `.gitignore` to prevent committing sensitive keys.
-* Provided a `.dockerignore` to ensure development dependencies and secrets aren't inadvertently baked into the production container.
-
-### ⚠️ CRITICAL SECURITY WARNING: Frontend API Keys
-Currently, the application injects the `GEMINI_API_KEY` into the frontend bundle via `vite.config.ts`. **This means anyone who visits your website can see and extract your API key from the browser.**
-
-**For Production, you MUST do one of the following:**
-1. **(Recommended) Move to a Backend:** Create a small backend service (e.g., using Express.js or Cloud Functions) that holds the API key and communicates with the Gemini API. Your React app should only call your backend.
-2. **Restrict the API Key:** Go to the Google Cloud Console > APIs & Services > Credentials, and add HTTP referrers restrictions to your API key so it can only be used from your specific production domain. *Note: this provides limited security against abuse but is better than nothing.*
+* **Secure Backend Proxy:** The application uses an Express.js backend to securely hold the `GEMINI_API_KEY` and communicate with the Gemini APIs. The frontend never exposes the key.
+* **Environment Protection:** Added `.env` to `.gitignore` to prevent committing sensitive keys.
+* **Build Integrity:** Provided a `.dockerignore` to ensure development dependencies and secrets aren't inadvertently baked into the production container.
+* **Security Headers:** The Express backend implements essential security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Strict-Transport-Security`) for robust defense.
