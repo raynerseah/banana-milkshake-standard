@@ -10,11 +10,14 @@ ENV GEMINI_API_KEY=$GEMINI_API_KEY
 RUN npm run build
 
 # Production stage
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=build /app/package*.json ./
+RUN npm ci --only=production
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/server.js ./server.js
 
 # Expose port 8080 for Google Cloud Run
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]

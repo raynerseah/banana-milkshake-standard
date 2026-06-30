@@ -10,11 +10,10 @@ import ErrorAlert from './components/ErrorAlert';
 import ResultsDisplay from './components/ResultsDisplay';
 import OutputPlaceholder from './components/OutputPlaceholder';
 
-// Create a stable component wrapper for FileInput to prevent re-renders in arrays
-const ProductFileInput = React.memo(({ index, onFileChange }: { index: number; onFileChange: (index: number, data: ImageData | null) => void }) => {
-    const handleChange = useCallback((data: ImageData | null) => onFileChange(index, data), [index, onFileChange]);
-    return <FileInput id={`product-image-${index}`} label={`Img ${index + 1}`} onFileChange={handleChange} compact />;
-});
+import IngredientsSection from './components/IngredientsSection';
+import LifestyleSection from './components/LifestyleSection';
+import SpicesSection from './components/SpicesSection';
+import FinalConfigSection from './components/FinalConfigSection';
 
 const App: React.FC = () => {
   // --- Assets State ---
@@ -257,211 +256,52 @@ const App: React.FC = () => {
               <div className="bg-white p-6 sm:p-8 rounded-[22px]">
                 <div className="space-y-8">
                   
-                  {/* Section 1: Assets */}
-                  <div className="space-y-6">
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-900 border-b-4 border-[#4285F4] pb-2 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-[#4285F4]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1-1m6-3l-2 2" /></svg>
-                        Add ingredients
-                      </h2>
-                      <p className="text-sm text-gray-500 mt-2">Provide key assets for your image ads</p>
-                    </div>
+                  <IngredientsSection 
+                    productImages={productImages}
+                    handleProductImageChange={handleProductImageChange}
+                    setStyleImage={setStyleImage}
+                    setLogoImage={setLogoImage}
+                    specialRequest={specialRequest}
+                    setSpecialRequest={setSpecialRequest}
+                  />
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">1. Product Photos (Max 4) <span className="text-red-500">*</span></label>
-                        <div className="grid grid-cols-2 gap-2">
-                            {productImages.map((_, index) => (
-                                <ProductFileInput 
-                                    key={`product-${index}`}
-                                    index={index}
-                                    onFileChange={handleProductImageChange}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    
-                    <FileInput id="style-image" label="2. Brand Style Guide / Ad Template" onFileChange={setStyleImage} required />
-                    <FileInput id="logo-image" label="3. Brand Logo (Optional)" onFileChange={setLogoImage} note="Transparent PNG recommended." />
-                    
-                    <div className="mt-4">
-                        <label htmlFor="special-request" className="block text-sm font-medium text-gray-700 mb-1">
-                            Special Request (Optional)
-                        </label>
-                        <textarea
-                            id="special-request"
-                            rows={2}
-                            value={specialRequest}
-                            onChange={(e) => setSpecialRequest(e.target.value)}
-                            placeholder="E.g. Make the background Christmas themed, place CTA on left, use dark mode..."
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white text-gray-900 text-sm placeholder:text-gray-400"
-                        />
-                    </div>
+                  <LifestyleSection 
+                    productImages={productImages}
+                    lifestyleProductSelection={lifestyleProductSelection}
+                    toggleLifestyleSelection={toggleLifestyleSelection}
+                    lifestylePrompt={lifestylePrompt}
+                    setLifestylePrompt={setLifestylePrompt}
+                    lifestyleError={lifestyleError}
+                    handleGenerateLifestyle={handleGenerateLifestyle}
+                    isGeneratingLifestyle={isGeneratingLifestyle}
+                    generatedLifestyleImage={generatedLifestyleImage}
+                    downloadImage={downloadImage}
+                  />
 
-                    {/* Optional Lifestyle Generation */}
-                    {productImages.some(img => img !== null) && (
-                      <div className="p-4 bg-green-50 rounded-lg border border-green-200 transition-all duration-300 space-y-4">
-                        <h3 className="text-lg font-bold text-gray-800 text-center">🍌 Upsize your order? 🍌</h3>
-                        <p className="text-sm text-gray-500 text-center -mt-2 mb-2">Optional: Generate a lifestyle scene using your products.</p>
+                  <SpicesSection 
+                    adCopy={adCopy}
+                    handleCopyChange={handleCopyChange}
+                    handleCopySuggestion={handleCopySuggestion}
+                    isSuggestingCopy={isSuggestingCopy}
+                  />
 
-                        <div className="mb-3">
-                            <p className="text-xs font-bold text-gray-600 mb-2">Select products for lifestyle scene:</p>
-                            <div className="flex gap-2 flex-wrap">
-                                {productImages.map((img, index) => img && (
-                                    <button 
-                                        key={`ls-sel-${index}`}
-                                        onClick={() => toggleLifestyleSelection(index)}
-                                        className={`w-10 h-10 rounded-md border-2 overflow-hidden transition-all relative ${lifestyleProductSelection[index] ? 'border-[#34A853] ring-2 ring-green-500/30' : 'border-gray-300 opacity-60'}`}
-                                    >
-                                        <img src={`data:${img.mimeType};base64,${img.data}`} alt="" className="w-full h-full object-cover" />
-                                        {lifestyleProductSelection[index] && (
-                                            <div className="absolute inset-0 bg-[#34A853]/20 flex items-center justify-center">
-                                                 <svg className="w-6 h-6 text-white drop-shadow-md" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
-                                            </div>
-                                        )}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                        
-                        <div>
-                          <textarea
-                            value={lifestylePrompt}
-                            onChange={(e) => setLifestylePrompt(e.target.value)}
-                            placeholder="Describe the lifestyle scene. Banana Milkshake will automatically put your selected product/s into context. (E.g. Asian man hiking at sunset, etc)"
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#34A853] focus:border-[#34A853] transition bg-gray-100 text-gray-900 text-sm"
-                            rows={3}
-                          />
-                        </div>
-
-                        {lifestyleError && <p className="text-xs text-red-500">{lifestyleError}</p>}
-
-                        <button 
-                          onClick={handleGenerateLifestyle} 
-                          disabled={isGeneratingLifestyle || !lifestylePrompt.trim()}
-                          className="w-full flex items-center justify-center gap-2 bg-[#34A853] text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all"
-                        >
-                          {isGeneratingLifestyle ? 'Upsizing...' : 'Generate Lifestyle (1K)'}
-                        </button>
-                        
-                        {generatedLifestyleImage && (
-                          <div className="mt-4 p-3 bg-white rounded-lg border border-gray-200 shadow-sm">
-                             <img src={`data:${generatedLifestyleImage.mimeType};base64,${generatedLifestyleImage.data}`} alt="Generated lifestyle" className="w-full rounded-md" />
-                             <div className="mt-2 text-right">
-                                 <button onClick={() => downloadImage(generatedLifestyleImage, 'lifestyle-image.png')} className="text-xs text-blue-600 hover:underline font-semibold">Download Image</button>
-                             </div>
-                          </div>
-                        )}
-                      </div>
-                     )}
-                  </div>
-
-                  {/* Section 2: Copy */}
-                  <div className="space-y-6">
-                    <div>
-                       <h2 className="text-2xl font-bold text-gray-900 border-b-4 border-[#FABC05] pb-2 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-[#FABC05]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
-                         Add spices (Optional)
-                       </h2>
-                    </div>
-
-                    <CopyInput id="headline" label="Headline" value={adCopy.headline} onChange={(e) => handleCopyChange('headline', e.target.value)} onSuggest={() => handleCopySuggestion('headline')} isSuggesting={isSuggestingCopy.headline} maxLength={35} />
-                    <CopyInput id="description" label="Description" value={adCopy.description} onChange={(e) => handleCopyChange('description', e.target.value)} onSuggest={() => handleCopySuggestion('description')} isSuggesting={isSuggestingCopy.description} isTextarea maxLength={100} />
-                    <CopyInput id="cta" label="Call to Action (CTA)" value={adCopy.cta} onChange={(e) => handleCopyChange('cta', e.target.value)} onSuggest={() => handleCopySuggestion('cta')} isSuggesting={isSuggestingCopy.cta} maxLength={25} />
-                  </div>
-
-                  {/* Section 3: Final Config */}
-                  <div className="space-y-6">
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-900 border-b-4 border-[#EA4335] pb-2 flex items-center gap-3">
-                         <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-[#EA4335]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                         Final takeaway requests
-                      </h2>
-                    </div>
-
-                    {(productImages.some(Boolean) || generatedLifestyleImage) && (
-                        <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                            <h4 className="text-sm font-bold text-gray-800 mb-2">Select assets for Final Ad:</h4>
-                            <p className="text-xs text-gray-600 mb-3 leading-relaxed">
-                                Choose at least 1. Selecting both Lifestyle + Prod asset will potentially result in the product being placed as a standalone, separate layer on top of the Lifestyle image.
-                            </p>
-                            <div className="flex gap-4 flex-wrap">
-                                {productImages.map((img, index) => img && (
-                                    <button 
-                                        key={`ad-sel-${index}`}
-                                        onClick={() => toggleAdSelection(index)}
-                                        className={`group relative w-20 h-20 rounded-xl border-2 overflow-hidden transition-all ${adProductSelection[index] ? 'border-blue-500 ring-2 ring-blue-300 shadow-md' : 'border-gray-300 opacity-50 grayscale'}`}
-                                        title={`Include Product ${index + 1}`}
-                                    >
-                                        <img src={`data:${img.mimeType};base64,${img.data}`} alt="" className="w-full h-full object-cover" />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-[10px] text-white text-center py-1">Prod {index+1}</div>
-                                    </button>
-                                ))}
-
-                                {generatedLifestyleImage && (
-                                    <button 
-                                        onClick={() => setUseLifestyleInAd(!useLifestyleInAd)}
-                                        className={`group relative w-20 h-20 rounded-xl border-2 overflow-hidden transition-all ${useLifestyleInAd ? 'border-green-500 ring-2 ring-green-300 shadow-md' : 'border-gray-300 opacity-50 grayscale'}`}
-                                        title="Include Generated Lifestyle Image"
-                                    >
-                                        <img src={`data:${generatedLifestyleImage.mimeType};base64,${generatedLifestyleImage.data}`} alt="" className="w-full h-full object-cover" />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-green-700/80 text-[10px] text-white text-center py-1">Lifestyle</div>
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    )}
-                    
-                    {/* Store Badges */}
-                    <div className="p-3 bg-gray-100 rounded-lg border border-gray-200 space-y-3">
-                        <div className="flex items-center gap-3">
-                            <input type="checkbox" id="badge-google" checked={includeGooglePlay} onChange={(e) => setIncludeGooglePlay(e.target.checked)} className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                            <label htmlFor="badge-google" className="text-sm text-gray-700">Include <b>Google Play</b> badge</label>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <input type="checkbox" id="badge-apple" checked={includeAppStore} onChange={(e) => setIncludeAppStore(e.target.checked)} className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                            <label htmlFor="badge-apple" className="text-sm text-gray-700">Include <b>App Store</b> badge</label>
-                        </div>
-                    </div>
-
-                    {/* Aspect Ratio & Resolution */}
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <h4 className="text-sm font-bold text-gray-800">Aspect Ratio (Max 3)</h4>
-                        <span className="text-xs text-gray-500">{selectedAspectRatios.length}/3 selected</span>
-                      </div>
-                      
-                      {aspectRatioOptions.map(({ category, ratios }) => (
-                        <div key={category}>
-                          <h5 className="text-xs font-bold text-gray-400 uppercase mb-2">{category}</h5>
-                          <div className="grid grid-cols-4 gap-2">
-                            {ratios.map(ratio => {
-                                const isSelected = selectedAspectRatios.includes(ratio);
-                                const isDisabled = !isSelected && selectedAspectRatios.length >= 3;
-                                return (
-                                    <button
-                                        key={ratio}
-                                        onClick={() => !isDisabled && toggleAspectRatio(ratio)}
-                                        disabled={isDisabled}
-                                        className={`py-1.5 text-sm rounded border transition-all 
-                                          ${isSelected ? 'bg-blue-50 border-blue-500 text-blue-700 font-bold shadow-sm' : 'border-gray-300 text-gray-600'}
-                                          ${isDisabled ? 'opacity-40 cursor-not-allowed bg-gray-50' : 'hover:border-gray-400'}
-                                        `}
-                                    >
-                                        {ratio}
-                                    </button>
-                                );
-                            })}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="flex bg-gray-100 p-1 rounded-lg">
-                        {['1K', '2K', '4K'].map((size) => (
-                            <button key={size} onClick={() => setImageSize(size)} className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${imageSize === size ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>{size}</button>
-                        ))}
-                    </div>
-                  </div>
+                  <FinalConfigSection 
+                    productImages={productImages}
+                    generatedLifestyleImage={generatedLifestyleImage}
+                    adProductSelection={adProductSelection}
+                    toggleAdSelection={toggleAdSelection}
+                    useLifestyleInAd={useLifestyleInAd}
+                    setUseLifestyleInAd={setUseLifestyleInAd}
+                    includeGooglePlay={includeGooglePlay}
+                    setIncludeGooglePlay={setIncludeGooglePlay}
+                    includeAppStore={includeAppStore}
+                    setIncludeAppStore={setIncludeAppStore}
+                    aspectRatioOptions={aspectRatioOptions}
+                    selectedAspectRatios={selectedAspectRatios}
+                    toggleAspectRatio={toggleAspectRatio}
+                    imageSize={imageSize}
+                    setImageSize={setImageSize}
+                  />
                 </div>
 
                 {/* Generate Button */}
