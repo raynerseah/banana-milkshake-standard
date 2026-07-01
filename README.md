@@ -1,6 +1,6 @@
 # Banana Milkshake Standard (Ext Ver.)
 
-Banana Milkshake is an AI-powered ad generation tool. Using Google's Gemini models (`gemini-3-flash` and `gemini-3-pro-image`), it helps marketers and creators automatically generate professional advertisements by compositing product images, lifestyle backgrounds, logos, and generating AI-assisted ad copy (headlines, descriptions, and CTAs).
+Banana Milkshake is an AI-powered ad generation tool. Using Google's Gemini models (`gemini-3.5-flash` for ad copy, and a selectable choice between Nano Banana 2 (`gemini-3.1-flash-image`) and Nano Banana Pro (`gemini-3-pro-image`) for images), it helps marketers and creators automatically generate professional advertisements by compositing product images, lifestyle backgrounds, logos, and generating AI-assisted ad copy (headlines, descriptions, and CTAs).
 
 ## ✨ Key Features
 *   **AI Copywriter**: Get intelligent copy suggestions for headlines, descriptions, and CTAs.

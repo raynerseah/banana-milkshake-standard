@@ -17,6 +17,8 @@ interface Props {
   toggleAspectRatio: (ratio: string) => void;
   imageSize: string;
   setImageSize: (size: string) => void;
+  imageModel: string;
+  setImageModel: (model: string) => void;
 }
 
 const FinalConfigSection: React.FC<Props> = ({
@@ -34,7 +36,9 @@ const FinalConfigSection: React.FC<Props> = ({
   selectedAspectRatios,
   toggleAspectRatio,
   imageSize,
-  setImageSize
+  setImageSize,
+  imageModel,
+  setImageModel
 }) => {
   return (
     <div className="space-y-6">
@@ -123,10 +127,25 @@ const FinalConfigSection: React.FC<Props> = ({
         ))}
       </div>
 
-      <div className="flex bg-gray-100 p-1 rounded-lg">
-          {['1K', '2K', '4K'].map((size) => (
-              <button key={size} onClick={() => setImageSize(size)} className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${imageSize === size ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>{size}</button>
-          ))}
+      <div className="flex justify-between gap-4">
+        {/* Model Selection */}
+        <div className="flex-1">
+          <h4 className="text-sm font-bold text-gray-800 mb-2">AI Model</h4>
+          <div className="flex bg-gray-100 p-1 rounded-lg">
+            <button onClick={() => setImageModel('gemini-3.1-flash-image')} className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${imageModel === 'gemini-3.1-flash-image' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>Nano Banana 2</button>
+            <button onClick={() => setImageModel('gemini-3-pro-image')} className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${imageModel === 'gemini-3-pro-image' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>Nano Banana Pro</button>
+          </div>
+        </div>
+
+        {/* Resolution */}
+        <div className="flex-1">
+          <h4 className="text-sm font-bold text-gray-800 mb-2">Resolution</h4>
+          <div className="flex bg-gray-100 p-1 rounded-lg">
+              {['1K', '2K', '4K'].map((size) => (
+                  <button key={size} onClick={() => setImageSize(size)} className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${imageSize === size ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>{size}</button>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,8 @@ export const useAdGenerator = () => {
     aspectRatios: string[],
     imageSize: string,
     includeGooglePlay: boolean,
-    includeAppStore: boolean
+    includeAppStore: boolean,
+    imageModel: string
   ) => {
     setIsGenerating(true);
     setGeneralError(null);
@@ -61,7 +62,8 @@ export const useAdGenerator = () => {
         aspectRatios,
         imageSize,
         includeGooglePlay,
-        includeAppStore
+        includeAppStore,
+        imageModel
       );
 
       setGeneratedAds(prev => prev.map((ad, idx) => {
@@ -101,11 +103,11 @@ export const useAdGenerator = () => {
     logoImage: ImageData | null,
     adCopy: AdCopy,
     specialRequest: string,
-    // We rely on the passed aspect ratio to avoid stale state issues inside useCallback
-    passedAspectRatio: string | undefined, 
+    passedAspectRatio: string | undefined,
     imageSize: string,
     includeGooglePlay: boolean,
-    includeAppStore: boolean
+    includeAppStore: boolean,
+    imageModel: string
   ) => {
     // 1. Optimistically set the specific ad to loading state
     setGeneratedAds(prev => prev.map(ad => 
@@ -132,7 +134,8 @@ export const useAdGenerator = () => {
         effectiveAspectRatio,
         imageSize,
         includeGooglePlay,
-        includeAppStore
+        includeAppStore,
+        imageModel
       );
 
       setGeneratedAds(prev => prev.map(ad => 
@@ -155,7 +158,7 @@ export const useAdGenerator = () => {
     }
   }, []);
 
-  const applyEdit = useCallback(async (index: number, prompt: string, referenceImage: ImageData | null, aspectRatio: string, imageSize: string) => {
+  const applyEdit = useCallback(async (index: number, prompt: string, referenceImage: ImageData | null, aspectRatio: string, imageSize: string, imageModel: string) => {
      // Find the current ad from the current state
      const currentAd = generatedAds.find(ad => ad.index === index);
      const currentImageUrl = currentAd?.imageUrl;
@@ -171,7 +174,7 @@ export const useAdGenerator = () => {
      }));
 
      try {
-        const editedUrl = await editAd(currentImageUrl, prompt, referenceImage, aspectRatio, imageSize);
+        const editedUrl = await editAd(currentImageUrl, prompt, referenceImage, aspectRatio, imageSize, imageModel);
         setGeneratedAds(prev => prev.map(ad => 
             ad.index === index ? { 
                 ...ad, 

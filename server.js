@@ -108,7 +108,7 @@ app.post('/api/getCopySuggestion', async (req, res) => {
 
         const suggestion = await withRetries(async () => {
             const response = await getAI().models.generateContent({
-                model: 'gemini-3-flash-preview',
+                model: 'gemini-3.5-flash',
                 contents: prompt,
                 config: { temperature: 0.8, thinkingConfig: { thinkingBudget: 1024 } }
             });
@@ -123,7 +123,7 @@ app.post('/api/getCopySuggestion', async (req, res) => {
 
 app.post('/api/editAd', async (req, res) => {
     try {
-        const { baseImage, prompt, referenceImage, aspectRatio, imageSize } = req.body;
+        const { baseImage, prompt, referenceImage, aspectRatio, imageSize, imageModel } = req.body;
         
         const match = baseImage.match(/^data:(image\/.+);base64,(.+)$/);
         if (!match) throw new Error("Invalid base image format.");
@@ -154,7 +154,7 @@ app.post('/api/editAd', async (req, res) => {
 
         const editedUrl = await withRetries(async () => {
             const response = await getAI().models.generateContent({
-                model: 'gemini-3.1-flash-image-preview',
+                model: imageModel || 'gemini-3.1-flash-image',
                 contents: { parts },
                 config: {
                     responseModalities: [Modality.IMAGE, Modality.TEXT],
@@ -176,7 +176,7 @@ app.post('/api/editAd', async (req, res) => {
 
 app.post('/api/generateLifestyleImage', async (req, res) => {
     try {
-        const { productImages, prompt, aspectRatio, imageSize } = req.body;
+        const { productImages, prompt, aspectRatio, imageSize, imageModel } = req.body;
         
         const parts = [];
         parts.push({ text: '<input_assets>' });
@@ -203,7 +203,7 @@ app.post('/api/generateLifestyleImage', async (req, res) => {
 
         const result = await withRetries(async () => {
             const response = await getAI().models.generateContent({
-                model: 'gemini-3.1-flash-image-preview',
+                model: imageModel || 'gemini-3.1-flash-image',
                 contents: { parts },
                 config: {
                     responseModalities: [Modality.IMAGE, Modality.TEXT],
@@ -225,7 +225,7 @@ app.post('/api/generateLifestyleImage', async (req, res) => {
 
 app.post('/api/generateSingleAd', async (req, res) => {
     try {
-        const { productAssets, lifestyleAsset, styleImage, logoImage, adCopy, specialRequest, creativeDirection, aspectRatio, imageSize, includeGooglePlay, includeAppStore } = req.body;
+        const { productAssets, lifestyleAsset, styleImage, logoImage, adCopy, specialRequest, creativeDirection, aspectRatio, imageSize, includeGooglePlay, includeAppStore, imageModel } = req.body;
         
         const parts = [];
         if (productAssets && productAssets.length > 0) {
@@ -290,7 +290,7 @@ app.post('/api/generateSingleAd', async (req, res) => {
 
         const imageUrl = await withRetries(async () => {
             const response = await getAI().models.generateContent({
-                model: 'gemini-3.1-flash-image-preview',
+                model: imageModel || 'gemini-3.1-flash-image',
                 contents: { parts },
                 config: {
                     responseModalities: [Modality.IMAGE, Modality.TEXT],

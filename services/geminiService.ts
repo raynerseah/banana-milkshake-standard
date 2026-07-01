@@ -75,9 +75,10 @@ export const editAd = async (
   prompt: string,
   referenceImage: ImageData | null,
   aspectRatio: string = '1:1',
-  imageSize: string = '1K'
+  imageSize: string = '1K',
+  imageModel: string = 'gemini-3.1-flash-image'
 ): Promise<string> => {
-    const data = await apiFetch('editAd', { baseImage, prompt, referenceImage, aspectRatio, imageSize });
+    const data = await apiFetch('editAd', { baseImage, prompt, referenceImage, aspectRatio, imageSize, imageModel });
     return data.imageUrl;
 };
 
@@ -85,9 +86,10 @@ export const generateLifestyleImage = async (
     productImages: ImageData[],
     prompt: string,
     aspectRatio: string = '1:1',
-    imageSize: string = '2K'
+    imageSize: string = '2K',
+    imageModel: string = 'gemini-3.1-flash-image'
 ): Promise<ImageData> => {
-    const data = await apiFetch('generateLifestyleImage', { productImages, prompt, aspectRatio, imageSize });
+    const data = await apiFetch('generateLifestyleImage', { productImages, prompt, aspectRatio, imageSize, imageModel });
     return data.image;
 };
 
@@ -106,7 +108,8 @@ export const generateSingleAd = async (
   aspectRatio: string,
   imageSize: string = '1K',
   includeGooglePlay: boolean = false,
-  includeAppStore: boolean = false
+  includeAppStore: boolean = false,
+  imageModel: string = 'gemini-3.1-flash-image'
 ): Promise<string> => {
     const payload = {
         productAssets,
@@ -119,7 +122,8 @@ export const generateSingleAd = async (
         aspectRatio,
         imageSize,
         includeGooglePlay,
-        includeAppStore
+        includeAppStore,
+        imageModel
     };
     const data = await apiFetch('generateSingleAd', payload);
     return data.imageUrl;
@@ -135,7 +139,8 @@ export const generateAds = async (
   aspectRatios: string[],
   imageSize: string = '1K',
   includeGooglePlay: boolean = false,
-  includeAppStore: boolean = false
+  includeAppStore: boolean = false,
+  imageModel: string = 'gemini-3.1-flash-image'
 ): Promise<PromiseSettledResult<string>[]> => {
     type AdTask = () => Promise<string>;
     const tasks: AdTask[] = [];
@@ -156,7 +161,8 @@ export const generateAds = async (
                     ratio,
                     imageSize,
                     includeGooglePlay,
-                    includeAppStore
+                    includeAppStore,
+                    imageModel
                 )
             );
         }

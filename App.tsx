@@ -27,6 +27,7 @@ const App: React.FC = () => {
   const [imageSize, setImageSize] = useState<string>('1K');
   const [includeGooglePlay, setIncludeGooglePlay] = useState<boolean>(false);
   const [includeAppStore, setIncludeAppStore] = useState<boolean>(false);
+  const [imageModel, setImageModel] = useState<string>('gemini-3.1-flash-image');
   
   // --- Selection Logic State ---
   const [lifestyleProductSelection, setLifestyleProductSelection] = useState<boolean[]>(Array(4).fill(false));
@@ -148,7 +149,7 @@ const App: React.FC = () => {
     setLifestyleError(null);
     setGeneratedLifestyleImage(null);
     try {
-        const result = await generateLifestyleImage(selectedImages, lifestylePrompt, '1:1', '2K');
+        const result = await generateLifestyleImage(selectedImages, lifestylePrompt, '1:1', '2K', imageModel);
         setGeneratedLifestyleImage(result);
         setUseLifestyleInAd(true); 
     } catch (e) {
@@ -183,9 +184,10 @@ const App: React.FC = () => {
         selectedAspectRatios, // Pass array
         imageSize,
         includeGooglePlay,
-        includeAppStore
+        includeAppStore,
+        imageModel
     );
-  }, [isFormValid, styleImage, generateAllAds, selectedProductAssets, selectedLifestyleAsset, logoImage, adCopy, specialRequest, selectedAspectRatios, imageSize, includeGooglePlay, includeAppStore]);
+  }, [isFormValid, styleImage, generateAllAds, selectedProductAssets, selectedLifestyleAsset, logoImage, adCopy, specialRequest, selectedAspectRatios, imageSize, includeGooglePlay, includeAppStore, imageModel]);
   
   const handleRegenerateAd = useCallback((index: number) => {
     if (!styleImage) return;
@@ -203,9 +205,10 @@ const App: React.FC = () => {
         ad.aspectRatio, // Use the ad's ratio
         imageSize,
         includeGooglePlay,
-        includeAppStore
+        includeAppStore,
+        imageModel
     );
-  }, [styleImage, generatedAds, regenerateSingle, selectedProductAssets, selectedLifestyleAsset, logoImage, adCopy, specialRequest, imageSize, includeGooglePlay, includeAppStore]);
+  }, [styleImage, generatedAds, regenerateSingle, selectedProductAssets, selectedLifestyleAsset, logoImage, adCopy, specialRequest, imageSize, includeGooglePlay, includeAppStore, imageModel]);
 
   // --- Edit Handlers ---
 
@@ -228,11 +231,11 @@ const App: React.FC = () => {
       const currentAd = generatedAds.find(ad => ad.index === editingIndex);
       if (!currentAd) return;
 
-      await applyEdit(editingIndex, editPrompt, editReferenceImage, currentAd.aspectRatio, imageSize);
+      await applyEdit(editingIndex, editPrompt, editReferenceImage, currentAd.aspectRatio, imageSize, imageModel);
       setEditPrompt('');
       setEditReferenceImage(null);
       setEditRefInputKey(prev => prev + 1);
-  }, [editingIndex, editPrompt, generatedAds, applyEdit, editReferenceImage, imageSize]);
+  }, [editingIndex, editPrompt, generatedAds, applyEdit, editReferenceImage, imageSize, imageModel]);
 
   // Get currently editing ad data for preview
   const currentEditingAd = editingIndex !== null ? generatedAds.find(ad => ad.index === editingIndex) : null;
@@ -301,6 +304,8 @@ const App: React.FC = () => {
                     toggleAspectRatio={toggleAspectRatio}
                     imageSize={imageSize}
                     setImageSize={setImageSize}
+                    imageModel={imageModel}
+                    setImageModel={setImageModel}
                   />
                 </div>
 
