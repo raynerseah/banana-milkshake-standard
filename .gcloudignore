@@ -1,0 +1,12 @@
+.gcloudignore
+.git
+.gitignore
+.dockerignore
+node_modules
+dist
+dist-ssr
+.env
+.vscode
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
