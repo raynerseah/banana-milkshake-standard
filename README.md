@@ -30,7 +30,7 @@ This project has been optimized for Google Cloud Run deployment. It features a u
 2. **Deploy to Cloud Run with your API Key:**
    Execute the following command in the root of the project to build and deploy your container. Because the API key is now securely handled on the backend at runtime, you must pass it using `--set-env-vars`.
    ```bash
-   gcloud run deploy banana-milkshake-app \
+   gcloud run deploy banana-milkshake-standard \
      --source . \
      --region us-central1 \
      --allow-unauthenticated \
