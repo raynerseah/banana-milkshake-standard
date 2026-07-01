@@ -27,7 +27,13 @@ This project has been optimized for Google Cloud Run deployment. It features a u
    gcloud config set project YOUR_PROJECT_ID
    ```
 
-2. **Deploy to Cloud Run with your API Key:**
+2. **Navigate to the Project Directory:**
+   Ensure you are in the correct cloned repository directory before deploying to avoid deploying the wrong files or encountering packaging errors:
+   ```bash
+   cd Banana-Milkshake-Standard-* # Replace with your actual directory name
+   ```
+
+3. **Deploy to Cloud Run with your API Key:**
    Execute the following command in the root of the project to build and deploy your container. Because the API key is now securely handled on the backend at runtime, you must pass it using `--set-env-vars`.
    ```bash
    gcloud run deploy banana-milkshake-standard \
